@@ -5,12 +5,12 @@ import React, { useEffect, useState } from "react";
 const Posts = () => {
   const [data, setData] = useState([]);
 
-  const getData = () => {
+  const fetchData = () => {
     return axios.get("https://dummyjson.com/posts");
   };
 
   useEffect(() => {
-    getData()
+    fetchData()
       .then((res) => {
         setData(res.data.posts);
         console.log(res.data.posts);
@@ -26,7 +26,7 @@ const Posts = () => {
         display: "flex",
         width: "90vw",
         flexWrap: "wrap",
-        justifyContent:'center',
+        justifyContent: "center",
         gap: "20px",
         margin: "auto",
       }}
@@ -36,8 +36,8 @@ const Posts = () => {
           sx={{
             border: "1px solid",
             borderRadius: "10px",
-            padding:"5px",
-            flex:'1 1 480px'
+            padding: "8px",
+            flex: "1 1 480px",
           }}
           key={el.id}
         >
@@ -45,8 +45,8 @@ const Posts = () => {
           <span>Body: {el.body}</span>
           <p>Reaction: {el.reactions}</p>
           <p>UserId: {el.userId}</p>
-          {el.tags.map((tag) => (
-            <p>{tag}</p>
+          {el.tags.map((eltag) => (
+            <p>{eltag}</p>
           ))}
         </Box>
       ))}
