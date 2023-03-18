@@ -37,9 +37,9 @@ export default function BasicCard() {
       {post.map((el) => (
         <Card sx={{ maxWidth: 400, padding: "8px", flex: "1 1 480px" }}>
           <CardContent>
-            <Typography sx={{ fontSize: 14 }}>Title: {el.title}</Typography>
+            <Typography sx={{ fontSize: 16 }}>Title: {el.title}</Typography>
 
-            <Typography sx={{ fontSize: 14, mb: 1.5 }} color="text.secondary">
+            <Typography sx={{ fontSize: 12, mb: 1.5 }} color="text.secondary">
               Body: {el.body}
             </Typography>
             <Typography variant="body2">Reaction: {el.reactions}</Typography>
