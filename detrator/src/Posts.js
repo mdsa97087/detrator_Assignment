@@ -13,7 +13,7 @@ const Posts = () => {
     fetchData()
       .then((res) => {
         setPost(res.data.posts);
-        console.log(res.data.posts);
+        // console.log(res.data.posts);
       })
       .catch((Error) => {
         console.log(Error);
