@@ -1,15 +1,18 @@
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
 import axios from "axios";
-import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
 
-const Posts = () => {
-  const [post, setPost] = useState([]);
+export default function BasicCard() {
+  const [post, setPost] = React.useState([]);
 
   const fetchData = () => {
     return axios.get("https://dummyjson.com/posts");
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchData()
       .then((res) => {
         setPost(res.data.posts);
@@ -32,26 +35,20 @@ const Posts = () => {
       }}
     >
       {post.map((el) => (
-        <Box
-          sx={{
-            border: "1px solid",
-            borderRadius: "10px",
-            padding: "8px",
-            flex: "1 1 480px",
-          }}
-          key={el.id}
-        >
-          <h4>Title: {el.title}</h4>
-          <span>Body: {el.body}</span>
-          <p>Reaction: {el.reactions}</p>
-          <p>UserId: {el.userId}</p>
-          {el.tags.map((eltag) => (
-            <p>{eltag}</p>
-          ))}
-        </Box>
+        <Card sx={{ minWidth: 250, padding: "8px", flex: "1 1 250px" }}>
+          <CardContent>
+            <Typography sx={{ fontSize: 16 }}>Title: {el.title}</Typography>
+            <Typography sx={{ fontSize: 12, mb: 1.5 }} color="text.secondary">
+              Body: {el.body}
+            </Typography>
+            <Typography variant="body2">Reaction: {el.reactions}</Typography>
+            <Typography variant="body2">UserId: {el.userId}</Typography>
+            {el.tags.map((eltag) => (
+              <Typography variant="body2">{eltag}</Typography>
+            ))}
+          </CardContent>
+        </Card>
       ))}
     </Box>
   );
-};
-
-export default Posts;
+}
