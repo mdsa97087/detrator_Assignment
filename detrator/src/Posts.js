@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 
 const Posts = () => {
-  const [data, setData] = useState([]);
+  const [post, setPost] = useState([]);
 
   const fetchData = () => {
     return axios.get("https://dummyjson.com/posts");
@@ -12,7 +12,7 @@ const Posts = () => {
   useEffect(() => {
     fetchData()
       .then((res) => {
-        setData(res.data.posts);
+        setPost(res.data.posts);
         console.log(res.data.posts);
       })
       .catch((Error) => {
@@ -31,7 +31,7 @@ const Posts = () => {
         margin: "auto",
       }}
     >
-      {data.map((el) => (
+      {post.map((el) => (
         <Box
           sx={{
             border: "1px solid",
